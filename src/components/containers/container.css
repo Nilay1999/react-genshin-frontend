@@ -1,0 +1,12 @@
+.content .sub-content {
+    padding: 70px 0;
+    text-align: center;
+    height: auto;
+    background-color: rgba(248, 249, 250);
+    border-radius: 10px;
+}
+
+.content .sub-content {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+}

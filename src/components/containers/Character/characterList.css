@@ -1,0 +1,13 @@
+table {
+    min-width: 800px;
+    min-height: 200px;
+    margin: auto;
+}
+
+th {
+    border-bottom: 1px solid black;
+}
+
+td {
+    text-align: center;
+}
