@@ -1,34 +1,66 @@
-import React, { useEffect, useState } from "react";
-import { useQuery, gql } from "@apollo/client";
-import "./characterList.css";
+import React, { useState } from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_ALL_CHARACTERS } from '../../../graphql/queries';
+import './characterList.css';
+import { Avatar, Card, Skeleton, Switch } from 'antd';
 
-const FILMS_QUERY = gql`
-    query {
-        getAllCharacters {
-            id
-            name
-            element
-            region
-            rarity
-            skills {
-                normal_attack
-            }
-            image
-        }
-    }
-`;
+const { Meta } = Card;
 
 function CharacterList() {
-    const [characterList, setCharacterList] = useState();
-    const { data, loading, error } = useQuery(FILMS_QUERY);
-
-    if (loading) return "Loading...";
+    const { data, loading, error } = useQuery(GET_ALL_CHARACTERS);
+    const [loader, setLoader] = useState(true);
+    if (loading) return 'Loading...';
     if (error) return <pre>{error.message}</pre>;
 
     return (
         <div className="content">
-            <div className="sub-content">
-                <table>
+            <div className="row ">
+                <div className="col-3">
+                    <div className="filter-menu">
+                        <input />
+                    </div>
+                </div>
+                <div className="col-6">
+                    <div className="character-content">
+                        <div className="row">
+                            {data.getAllCharacters.map((val, key) => {
+                                return (
+                                    <div className="col-sm-3 character-card">
+                                        <Card
+                                            key={key}
+                                            hoverable
+                                            style={{
+                                                width: 150,
+                                                marginBottom: '10px',
+                                            }}
+                                            loading={loading}>
+                                            <Meta
+                                                avatar={
+                                                    <img
+                                                        alt="example"
+                                                        width="115"
+                                                        height="115"
+                                                        style={{
+                                                            marginBottom:
+                                                                '10px',
+                                                            backgroundColor:
+                                                                val.rarity == 5
+                                                                    ? '#cf3f3f9a'
+                                                                    : '#ae92d680',
+                                                            borderRadius: '5px',
+                                                        }}
+                                                        src={val.image}
+                                                    />
+                                                }
+                                                title={val.name}
+                                            />
+                                        </Card>
+                                    </div>
+                                );
+                            })}
+                        </div>
+
+                        {/* <table>
                     <tr>
                         <th>id</th>
                         <th>name</th>
@@ -51,15 +83,19 @@ function CharacterList() {
                                     <img
                                         src={val.image}
                                         style={{
-                                            width: "50px",
-                                            height: "50px",
+                                            width: '50px',
+                                            height: '50px',
                                         }}
+                                        alt="character"
                                     />
                                 </td>
                             </tr>
                         );
                     })}
-                </table>
+                </table> */}
+                    </div>
+                </div>
+                <div className="col-3"></div>
             </div>
         </div>
     );

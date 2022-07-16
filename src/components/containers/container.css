@@ -1,12 +1,15 @@
-.content .sub-content {
+.content {
     padding: 70px 0;
     text-align: center;
     height: auto;
     background-color: rgba(248, 249, 250);
     border-radius: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    background-color: #1e1f21;
 }
 
-.content .sub-content {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 600;
+.sub-content {
+    padding: 20px 40px;
+    background-color: #1e1f21;
 }

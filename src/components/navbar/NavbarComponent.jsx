@@ -1,28 +1,33 @@
-import React from "react";
-import { Nav, Navbar } from "react-bootstrap";
-import LinkContainer from "react-router-bootstrap/LinkContainer";
-import { Link } from "react-router-dom";
-import { Anemo } from "genshin-icon";
+import React from 'react';
+import { Nav, Navbar } from 'react-bootstrap';
+import LinkContainer from 'react-router-bootstrap/LinkContainer';
+import { Link } from 'react-router-dom';
+import { Anemo } from 'genshin-icon';
+import '../common.css';
 
 function NavbarComponent() {
     return (
         <Navbar
             collapseOnSelect
-            bg="light"
             expand="md"
             className="mb-3 p-2"
-            style={{ borderRadius: "10px" }}
-        >
+            style={{ borderRadius: '10px', backgroundColor: '#282C36' }}>
             <Navbar.Brand
                 as={Link}
                 to="/"
-                className="font-weight-bold text-muted"
-                style={{ marginLeft: "10px" }}
-            >
+                className="font-weight-bold"
+                style={{
+                    marginLeft: '10px',
+                    color: '#6291e9',
+                    fontSize: '25px',
+                }}>
                 <Anemo
                     size="25"
-                    color="black"
-                    style={{ marginRight: "10px" }}
+                    style={{
+                        marginRight: '10px',
+                        color: '#6291e9',
+                        marginRight: '20px',
+                    }}
                 />
                 Genshin Guide
             </Navbar.Brand>

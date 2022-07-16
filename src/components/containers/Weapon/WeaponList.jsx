@@ -1,26 +1,12 @@
-import React, { useState } from "react";
-import { useQuery, gql } from "@apollo/client";
-import "../Character/characterList.css";
-
-const FILMS_QUERY = gql`
-    query {
-        getAllWeapon {
-            id
-            name
-            weapon_type
-            location
-            rarity
-            passive
-            image
-        }
-    }
-`;
+import { useQuery } from '@apollo/client';
+import '../Character/characterList.css';
+import { GET_ALL_WEAPONS } from '../../../graphql/queries';
 
 function WeaponList() {
-    const [characterList, setCharacterList] = useState();
-    const { data, loading, error } = useQuery(FILMS_QUERY);
+    const { data, loading, error } = useQuery(GET_ALL_WEAPONS);
 
-    if (loading) return "Loading...";
+    console.log(data);
+    if (loading) return 'Loading...';
     if (error) return <pre>{error.message}</pre>;
 
     return (
@@ -49,9 +35,10 @@ function WeaponList() {
                                     <img
                                         src={val.image}
                                         style={{
-                                            width: "50px",
-                                            height: "50px",
+                                            width: '50px',
+                                            height: '50px',
                                         }}
+                                        alt="weapon"
                                     />
                                 </td>
                             </tr>

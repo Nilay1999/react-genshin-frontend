@@ -11,3 +11,17 @@ th {
 td {
     text-align: center;
 }
+.filter-menu {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.character-content {
+    margin-top: 20px;
+    padding: 30px;
+}
+/* 
+.filter-menu {
+} */
