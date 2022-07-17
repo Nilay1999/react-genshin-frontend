@@ -12,6 +12,7 @@ export const GET_ALL_CHARACTERS = gql`
                 normal_attack
             }
             image
+            banner_image
         }
     }
 `;
