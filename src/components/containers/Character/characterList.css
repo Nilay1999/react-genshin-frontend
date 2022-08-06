@@ -17,7 +17,7 @@ input {
     border-style: none;
     border-radius: 8px;
     height: 40px;
-    width: 240px;
+    width: auto;
 }
 
 input::placeholder {
@@ -27,13 +27,21 @@ input::placeholder {
     font-style: italic;
 }
 
+input:focus {
+    color: white;
+    padding: 10px;
+}
+
 .filter-menu {
-    margin-left: 30px;
     margin-top: 20px;
-    padding: 15px;
+    padding: 10px;
     margin-top: 20px;
     background-color: #23252a;
     border-radius: 10px;
+}
+
+.search {
+    width: auto;
 }
 
 .character-content {
@@ -53,4 +61,12 @@ input::placeholder {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.element-button {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 4px;
+    background-color: #282b36;
+    border: #6291e9;
 }

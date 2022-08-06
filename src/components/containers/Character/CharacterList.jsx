@@ -2,36 +2,37 @@ import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_CHARACTERS } from '../../../graphql/queries';
 import './characterList.css';
-import { Avatar, Card, Skeleton, Switch } from 'antd';
+import { Card } from 'antd';
+import FilterComponent from './FilterComponent';
+import { BANNER_LINK } from '../../../utils/constants';
 
 const { Meta } = Card;
 
 function CharacterList() {
     const { data, loading, error } = useQuery(GET_ALL_CHARACTERS);
-    const [banner, setBanner] = useState(
-        'https://nest-genshin-images.s3.ap-south-1.amazonaws.com/714285876031a4f2cf5c3d6a45ee3370'
-    );
+    const [banner, setBanner] = useState(BANNER_LINK);
 
     if (loading) return 'Loading ...';
     if (error) return <pre>{error.message}</pre>;
 
     return (
         <div className="content">
+            <h2 style={{ fontWeight: 'bold' }}>CHARACTERS</h2>
             <div className="row ">
                 <div className="col-3">
-                    <div className="filter-menu">
-                        <input
-                            className="serach"
-                            placeholder="Filter by Name"
-                        />
-                    </div>
+                    <FilterComponent />
                 </div>
                 <div className="col-6">
                     <div className="character-content">
-                        <div className="row">
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                                justifyContent: 'center',
+                            }}>
                             {data.getAllCharacters.map((val, key) => {
                                 return (
-                                    <div className="col-sm-3 character-card">
+                                    <div className="character-card">
                                         <Card
                                             onClick={() => console.log(val.id)}
                                             hoverable
@@ -40,8 +41,9 @@ function CharacterList() {
                                             }
                                             key={key}
                                             style={{
-                                                width: 150,
+                                                width: 130,
                                                 marginBottom: '10px',
+                                                cursor: 'pointer',
                                             }}
                                             loading={loading}>
                                             <Meta
@@ -51,8 +53,6 @@ function CharacterList() {
                                                         width="115"
                                                         height="115"
                                                         style={{
-                                                            marginBottom:
-                                                                '10px',
                                                             backgroundColor:
                                                                 val.rarity === 5
                                                                     ? '#e1872280'
@@ -62,8 +62,18 @@ function CharacterList() {
                                                         src={val.image}
                                                     />
                                                 }
-                                                title={val.name}
                                             />
+                                            <div
+                                                style={{
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    padding: '5px',
+                                                    height: '60px',
+                                                    fontWeight: 'normal',
+                                                    color: 'white',
+                                                }}>
+                                                {val.name}
+                                            </div>
                                         </Card>
                                     </div>
                                 );

@@ -1,3 +1,15 @@
 .navbar-light .navbar-nav .nav-link {
     color: #6291e9 !important;
 }
+
+.nav-link {
+    opacity: 0.5;
+}
+
+.nav-link:hover {
+    opacity: 1;
+}
+
+Card:hover {
+    outline: #6291e9;
+}
