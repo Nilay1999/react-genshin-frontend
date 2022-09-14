@@ -1,6 +1,20 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_CHARACTERS } from '../../../graphql/queries';
+import {
+    ANEMO,
+    CRYO,
+    DENDRO,
+    ELECTRO,
+    GEO,
+    HYDRO,
+    PYRO,
+    SWORD,
+    POLEARM,
+    CLAYMORE,
+    CATALYST,
+    BOW,
+} from '../../../utils/constants';
 import './characterList.css';
 import { Card } from 'antd';
 import FilterComponent from './FilterComponent';

@@ -18,6 +18,28 @@ import {
 import './characterList.css';
 
 function FilterComponent() {
+    const elements = {
+        Anemo: ANEMO,
+        Cryo: CRYO,
+        Dendro: DENDRO,
+        Electro: ELECTRO,
+        Geo: GEO,
+        Hydro: HYDRO,
+        Pyro: PYRO,
+    };
+
+    const weapons = {
+        Sword: SWORD,
+        Polearm: POLEARM,
+        Claymore: CLAYMORE,
+        Catalyst: CATALYST,
+        Bow: BOW,
+    };
+
+    const gender = ['Male', 'Female'];
+
+    const bodyType = ['Boy', 'Tall Male', 'Tall Female', 'Girl', 'Small girl'];
+
     return (
         <div className="filter-menu">
             <input className="search" placeholder="Filter by Name" />
@@ -29,57 +51,23 @@ function FilterComponent() {
                         flexWrap: 'wrap',
                         justifyContent: 'left',
                     }}>
-                    <OverlayTrigger
-                        placement="top"
-                        overlay={<Tooltip id="button-tooltip">Anemo</Tooltip>}>
-                        <button className="element-button" onClick={{}}>
-                            <img src={ANEMO} height="30" alt="element" />
-                        </button>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                        placement="top"
-                        overlay={<Tooltip id="button-tooltip">Pyro</Tooltip>}>
-                        <button className="element-button" onClick={{}}>
-                            <img src={PYRO} height="30" alt="element" />
-                        </button>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                        placement="top"
-                        overlay={<Tooltip id="button-tooltip">Cryo</Tooltip>}>
-                        <button className="element-button" onClick={{}}>
-                            <img src={CRYO} height="30" alt="element" />
-                        </button>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                        placement="top"
-                        overlay={<Tooltip id="button-tooltip">Geo</Tooltip>}>
-                        <button className="element-button" onClick={{}}>
-                            <img src={GEO} height="30" alt="element" />
-                        </button>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                        placement="top"
-                        overlay={<Tooltip id="button-tooltip">Hydro</Tooltip>}>
-                        <button className="element-button" onClick={{}}>
-                            <img src={HYDRO} height="30" alt="element" />
-                        </button>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                        placement="top"
-                        overlay={
-                            <Tooltip id="button-tooltip">Electro</Tooltip>
-                        }>
-                        <button className="element-button" onClick={{}}>
-                            <img src={ELECTRO} height="30" alt="element" />
-                        </button>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                        placement="top"
-                        overlay={<Tooltip id="button-tooltip">Dendro</Tooltip>}>
-                        <button className="element-button" onClick={{}}>
-                            <img src={DENDRO} height="30" alt="element" />
-                        </button>
-                    </OverlayTrigger>
+                    {Object.keys(elements).map((key, index) => {
+                        return (
+                            <OverlayTrigger
+                                placement="top"
+                                overlay={
+                                    <Tooltip id="button-tooltip">{key}</Tooltip>
+                                }>
+                                <button className="element-button" onClick={{}}>
+                                    <img
+                                        src={elements[key]}
+                                        height="30"
+                                        alt="element"
+                                    />
+                                </button>
+                            </OverlayTrigger>
+                        );
+                    })}
                 </div>
             </div>
             <div style={{ width: 200, margin: '20px auto' }}>
@@ -90,47 +78,23 @@ function FilterComponent() {
                         flexWrap: 'wrap',
                         justifyContent: 'left',
                     }}>
-                    <OverlayTrigger
-                        placement="top"
-                        overlay={<Tooltip id="button-tooltip">Sword</Tooltip>}>
-                        <button className="element-button" onClick={{}}>
-                            <img src={SWORD} height="30" alt="element" />
-                        </button>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                        placement="top"
-                        overlay={<Tooltip id="button-tooltip">Bow</Tooltip>}>
-                        <button className="element-button" onClick={{}}>
-                            <img src={BOW} height="30" alt="element" />
-                        </button>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                        placement="top"
-                        overlay={
-                            <Tooltip id="button-tooltip">Catalyst</Tooltip>
-                        }>
-                        <button className="element-button" onClick={{}}>
-                            <img src={CATALYST} height="30" alt="element" />
-                        </button>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                        placement="top"
-                        overlay={
-                            <Tooltip id="button-tooltip">Claymore</Tooltip>
-                        }>
-                        <button className="element-button" onClick={{}}>
-                            <img src={CLAYMORE} height="30" alt="element" />
-                        </button>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                        placement="top"
-                        overlay={
-                            <Tooltip id="button-tooltip">Polearm</Tooltip>
-                        }>
-                        <button className="element-button" onClick={{}}>
-                            <img src={POLEARM} height="30" alt="element" />
-                        </button>
-                    </OverlayTrigger>
+                    {Object.keys(weapons).map((key, index) => {
+                        return (
+                            <OverlayTrigger
+                                placement="top"
+                                overlay={
+                                    <Tooltip id="button-tooltip">{key}</Tooltip>
+                                }>
+                                <button className="element-button" onClick={{}}>
+                                    <img
+                                        src={weapons[key]}
+                                        height="30"
+                                        alt="element"
+                                    />
+                                </button>
+                            </OverlayTrigger>
+                        );
+                    })}
                 </div>
             </div>
             <div style={{ width: 200, margin: '20px auto' }}>
@@ -141,12 +105,16 @@ function FilterComponent() {
                         flexWrap: 'wrap',
                         justifyContent: 'left',
                     }}>
-                    <button className="element-button" onClick={{}}>
-                        Male
-                    </button>
-                    <button className="element-button" onClick={{}}>
-                        Female
-                    </button>
+                    {gender.map((value, key) => {
+                        return (
+                            <button
+                                className="element-button"
+                                key={key}
+                                onClick={{}}>
+                                {value}
+                            </button>
+                        );
+                    })}
                 </div>
             </div>
             <div style={{ width: 200, margin: '20px auto' }}>
@@ -157,21 +125,16 @@ function FilterComponent() {
                         flexWrap: 'wrap',
                         justifyContent: 'left',
                     }}>
-                    <button className="element-button" onClick={{}}>
-                        Boy
-                    </button>
-                    <button className="element-button" onClick={{}}>
-                        Tall Male
-                    </button>
-                    <button className="element-button" onClick={{}}>
-                        Tall Female
-                    </button>
-                    <button className="element-button" onClick={{}}>
-                        Girl
-                    </button>
-                    <button className="element-button" onClick={{}}>
-                        Small Girl
-                    </button>
+                    {bodyType.map((value, key) => {
+                        return (
+                            <button
+                                className="element-button"
+                                key={key}
+                                onClick={{}}>
+                                {value}
+                            </button>
+                        );
+                    })}
                 </div>
             </div>
             <div style={{ width: 200, margin: '20px auto' }}>
