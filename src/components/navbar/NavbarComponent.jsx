@@ -3,7 +3,7 @@ import { Nav, Navbar } from 'react-bootstrap';
 import LinkContainer from 'react-router-bootstrap/LinkContainer';
 import { Link } from 'react-router-dom';
 import '../common.css';
-const img_icon = require('../../static/images/paimon.jpg');
+const img_icon = '/images/paimon.jpg';
 
 function NavbarComponent() {
     return (
@@ -35,7 +35,7 @@ function NavbarComponent() {
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-left">
-                <Nav activeKey={window.location.pathname}>
+                <Nav activeKey={window.location.pathname} className="mr-auto">
                     <LinkContainer to="/characters">
                         <Nav.Link className="nav-link" activeClassName="active">
                             Character
@@ -51,12 +51,6 @@ function NavbarComponent() {
                             Enemies
                         </Nav.Link>
                     </LinkContainer>
-                    {/* <LinkContainer to="/signup">
-                        <Nav.Link>Signup</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/login">
-                        <Nav.Link>Login</Nav.Link>
-                    </LinkContainer> */}
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

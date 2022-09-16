@@ -6,7 +6,8 @@
     opacity: 0.5;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.active {
     opacity: 1;
 }
 

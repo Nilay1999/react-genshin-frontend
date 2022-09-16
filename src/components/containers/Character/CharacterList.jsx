@@ -1,20 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_CHARACTERS } from '../../../graphql/queries';
-import {
-    ANEMO,
-    CRYO,
-    DENDRO,
-    ELECTRO,
-    GEO,
-    HYDRO,
-    PYRO,
-    SWORD,
-    POLEARM,
-    CLAYMORE,
-    CATALYST,
-    BOW,
-} from '../../../utils/constants';
 import './characterList.css';
 import { Card } from 'antd';
 import FilterComponent from './FilterComponent';
@@ -23,7 +9,7 @@ import { BANNER_LINK } from '../../../utils/constants';
 const { Meta } = Card;
 
 function CharacterList() {
-    const { data, loading, error } = useQuery(GET_ALL_CHARACTERS);
+    const { data, loading, error, refetch } = useQuery(GET_ALL_CHARACTERS);
     const [banner, setBanner] = useState(BANNER_LINK);
 
     if (loading) return 'Loading ...';
@@ -34,7 +20,7 @@ function CharacterList() {
             <h2 style={{ fontWeight: 'bold' }}>CHARACTERS</h2>
             <div className="row ">
                 <div className="col-3">
-                    <FilterComponent />
+                    <FilterComponent onChange={refetch} />
                 </div>
                 <div className="col-6">
                     <div className="character-content">

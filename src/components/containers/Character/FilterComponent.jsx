@@ -1,3 +1,4 @@
+import { useLazyQuery } from '@apollo/client';
 import React from 'react';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
@@ -17,7 +18,7 @@ import {
 } from '../../../utils/constants';
 import './characterList.css';
 
-function FilterComponent() {
+function FilterComponent({ onChange }) {
     const elements = {
         Anemo: ANEMO,
         Cryo: CRYO,
@@ -58,7 +59,15 @@ function FilterComponent() {
                                 overlay={
                                     <Tooltip id="button-tooltip">{key}</Tooltip>
                                 }>
-                                <button className="element-button" onClick={{}}>
+                                <button
+                                    className="element-button"
+                                    onClick={() => {
+                                        onChange({
+                                            query: {
+                                                element: key,
+                                            },
+                                        });
+                                    }}>
                                     <img
                                         src={elements[key]}
                                         height="30"
@@ -85,7 +94,15 @@ function FilterComponent() {
                                 overlay={
                                     <Tooltip id="button-tooltip">{key}</Tooltip>
                                 }>
-                                <button className="element-button" onClick={{}}>
+                                <button
+                                    className="element-button"
+                                    onClick={() => {
+                                        onChange({
+                                            query: {
+                                                weapon_type: key,
+                                            },
+                                        });
+                                    }}>
                                     <img
                                         src={weapons[key]}
                                         height="30"
@@ -110,14 +127,20 @@ function FilterComponent() {
                             <button
                                 className="element-button"
                                 key={key}
-                                onClick={{}}>
+                                onClick={() => {
+                                    onChange({
+                                        query: {
+                                            gender: value,
+                                        },
+                                    });
+                                }}>
                                 {value}
                             </button>
                         );
                     })}
                 </div>
             </div>
-            <div style={{ width: 200, margin: '20px auto' }}>
+            {/* <div style={{ width: 200, margin: '20px auto' }}>
                 <h5 style={{ textAlign: 'center' }}>BODY TYPE</h5>
                 <div
                     style={{
@@ -136,7 +159,7 @@ function FilterComponent() {
                         );
                     })}
                 </div>
-            </div>
+            </div> */}
             <div style={{ width: 200, margin: '20px auto' }}>
                 <h5 style={{ textAlign: 'center' }}>RARITY</h5>
                 <div
@@ -145,12 +168,8 @@ function FilterComponent() {
                         flexWrap: 'wrap',
                         justifyContent: 'left',
                     }}>
-                    <button className="element-button" onClick={{}}>
-                        4 Star
-                    </button>
-                    <button className="element-button" onClick={{}}>
-                        5 Star
-                    </button>
+                    <button className="element-button">4 Star</button>
+                    <button className="element-button">5 Star</button>
                 </div>
             </div>
         </div>
